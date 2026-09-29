@@ -1,0 +1,70 @@
+================================================================================
+PEAK-DEMAND CAPACITY SIMULATOR -- EXECUTIVE WORKLOAD SCENARIO REPORT
+================================================================================
+Generated Date: 2026-09-05
+Scope: 5-Scenario Workload Stress Testing & Capacity Recommendation
+
+--------------------------------------------------------------------------------
+1. SCENARIO PERFORMANCE COMPARISON SUMMARY
+--------------------------------------------------------------------------------
+   scenario_name  peak_demand_rpm  peak_instances  maximum_p95_latency_ms  maximum_error_rate_pct sla_compliance  sla_compliance_percentage
+      Normal Day            967.3              10                    79.3                    0.14      COMPLIANT                     100.00
+   Seasonal Peak           1737.3              10                    91.7                    0.18      COMPLIANT                     100.00
+   Breaking News           2083.1              10                    99.1                    0.18      COMPLIANT                     100.00
+   Disaster Peak           5016.2              14                   343.4                    0.18      COMPLIANT                     100.00
+Extreme Disaster           8464.3              22                  5572.2                    0.63       VIOLATED                      99.31
+
+--------------------------------------------------------------------------------
+2. KEY STAKEHOLDER QUESTIONS & ANALYSIS
+--------------------------------------------------------------------------------
+
+Q1: WHICH SCENARIO IS SAFEST?
+--------------------------------------------------------------------------------
+Answer: Scenario 1 - "Normal Day" (and Scenario 2 - "Seasonal Peak").
+- Under Normal Day conditions, average demand is 798.2 RPM and peak demand 
+  reaches only 967.3 RPM.
+- The default baseline fleet of 10 servers provides 5,000 RPM capacity, which 
+  easily covers demand with zero queueing, 100.0% SLA compliance, and maximum response times 
+  of only 79.3 ms (well below the 500 ms SLA limit).
+
+Q2: WHICH SCENARIO IS MOST DIFFICULT?
+--------------------------------------------------------------------------------
+Answer: Scenario 5 - "Extreme Disaster".
+- Demand surges to a catastrophic peak of 8464.3 RPM -- a 10.6x surge over normal 
+  average demand.
+- To handle this demand, the auto-scaler must scale the server fleet from 10 servers up to 
+  22 servers.
+- Because response time peaks at 5572.2 ms during sudden surge onset (exceeding 
+  the 500 ms SLA threshold), this scenario produces an SLA VIOLATION with 99.31% compliance.
+
+Q3: WHERE DOES THE BASELINE FAIL?
+--------------------------------------------------------------------------------
+Answer: Baseline average-based planning fails during Disaster Peak and Extreme Disaster.
+- A static fleet provisioned for average demand (798.2 RPM) can only handle 
+  up to 5,000 RPM.
+- When a Major Disaster strikes (5016.2 RPM peak), a static baseline fleet suffers an 
+  immediate capacity gap of 16 RPM.
+- Without dynamic auto-scaling, static baseline planning causes massive queue accumulation, 
+  server overload, and complete website unavailability during emergency events.
+
+Q4: WHICH CAPACITY RECOMMENDATION IS MADE?
+--------------------------------------------------------------------------------
+Answer: Provision a Dynamic Auto-Scaling Fleet with 10 Base Instances and 30 Max Scaling Ceiling.
+- Baseline Minimum: Keep 10 active instances (5,000 RPM capacity) for normal operations.
+- Dynamic Scaling Ceiling: Allow auto-scaling up to 30 instances (15,000 RPM capacity) for emergency events.
+- Scaling Trigger Thresholds: Trigger scale-out at 70% CPU utilisation and urgent scale-out at 85% CPU.
+- Provisioning Optimization: Pre-warm 5 additional instances when disaster warnings are issued to eliminate 
+  the 3-minute scaling lag.
+
+Q5: WHY IS THIS RECOMMENDATION REASONABLE?
+--------------------------------------------------------------------------------
+- Cost Efficiency: Avoids paying for 30-50 servers continuously during 95% of normal operating days.
+- Disaster Resilience: Ensures that when a disaster strikes, the fleet automatically scales up to 
+  22 servers to absorb extreme traffic spikes.
+- Realistic Reliability: It does NOT claim "perfect reliability." Acknowledges that during the initial 
+  3-minute scaling lag of an extreme disaster surge, latency briefly exceeds 500 ms before new servers 
+  come online.
+
+================================================================================
+REPORT COMPLETE -- Executive Scenario Analysis Saved to outputs/scenario_report.txt
+================================================================================

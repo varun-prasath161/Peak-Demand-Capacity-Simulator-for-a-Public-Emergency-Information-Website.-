@@ -1,0 +1,74 @@
+================================================================================
+BEFORE-AND-AFTER EXPERIMENTAL REPORT: AVERAGE VS SCENARIO CAPACITY PLANNING
+================================================================================
+Test Scenario Workload: DISASTER_PEAK (Peak Demand: 5,027 RPM)
+SLA Target Boundaries: p95 Latency <= 500ms, Error Rate <= 1.0%
+Date: 2026-09-05
+--------------------------------------------------------------------------------
+
+1. BASELINE (Average-Based Capacity Planning)
+--------------------------------------------------------------------------------
+- Planning Philosophy: Sized based on average historical traffic (~1,300 RPM).
+- Configuration: 4 initial instances, hard ceiling of 6 instances (3,000 RPM capacity).
+- Measured Results under DISASTER_PEAK:
+  * Peak Demand:            5,027 RPM
+  * Peak Available Capacity: 3,000 RPM (Capacity Gap: 2,027 RPM)
+  * Peak Active Instances:   6 instances (Capped at maximum ceiling)
+  * Maximum Queue Depth:    50,000 queued requests
+  * Maximum p95 Latency:    62,630 ms (SLA Target: 500ms -> BREACHED)
+  * Maximum Error Rate:     65.29% (HTTP 503 drops)
+  * Total Unmet Requests:   350,416 dropped user requests
+  * SLA Compliance:         20.6% (SLA Status: FAILED)
+
+
+2. TARGET
+--------------------------------------------------------------------------------
+- Objective: Maintain 100% SLA compliance (p95 latency <= 500ms, error rate <= 1.0%)
+  even when subjected to a 4.0x disaster traffic surge. Zero dropped requests.
+
+
+3. MEASURED RESULT (Scenario-Based Capacity Planning)
+--------------------------------------------------------------------------------
+- Planning Philosophy: Sized explicitly to absorb disaster peak demand curve.
+- Configuration: 10 initial instances, maximum ceiling of 20 instances (10,000 RPM capacity).
+- Measured Results under DISASTER_PEAK:
+  * Peak Demand:            5,027 RPM
+  * Peak Available Capacity: 7,000 RPM (Sufficient Headroom: +1,973 RPM)
+  * Peak Active Instances:   14 instances
+  * Maximum Queue Depth:    0 queued requests (Zero queue buildup)
+  * Maximum p95 Latency:    384 ms (SLA Target: 500ms -> PASSED)
+  * Maximum Error Rate:     0.18%
+  * Total Unmet Requests:   0 dropped requests
+  * SLA Compliance:         100.0% (SLA Status: PASSED)
+
+
+4. ERROR ANALYSIS & ROOT CAUSE EXPLANATION
+--------------------------------------------------------------------------------
+Why does Average-Based Planning Fail?
+Average-based planning relies on steady-state mean utilization (~1,300 RPM) and sets
+an instance ceiling of 6 servers (3,000 RPM max). When a disaster strikes:
+1. Demand surges to 5,027 RPM within 15 minutes.
+2. The infrastructure ceiling of 3,000 RPM creates an unbridgeable 2,200 RPM shortfall.
+3. Queue depth rapidly expands to 50,000 backlog items.
+4. M/M/1 queuing delay causes p95 latency to explode to 62,630ms.
+5. The queue buffer overflows, dropping 350,416 critical emergency user requests.
+
+Why does Scenario-Based Planning Succeed?
+Scenario-based planning models the non-uniform disaster surge curve in advance. By expanding the
+instance ceiling to 20 servers and starting with 10 warm instances, auto-scaling successfully
+scales to 14 instances, matching demand in real-time and maintaining 100% SLA compliance.
+
+
+5. RECOMMENDATION & CONCLUSION
+--------------------------------------------------------------------------------
+RECOMMENDATION: Transition immediately from Average-Based to Scenario-Based Capacity Planning.
+
+Conclusion:
+Scenario-based planning directly improves service-level compliance from 20.6% to 100.0%,
+completely eliminating the 350,416 dropped user requests during disaster emergencies.
+
+Infrastructure Sizing Recommendation for DISASTER_PEAK:
+- Base Provisioning: 10 active instances (5,000 RPM baseline buffer)
+- Maximum Ceiling:  20 active instances (10,000 RPM max ceiling)
+- Scaling Policy:   Scale out at 70% CPU/RPM utilization with 180s scaling propagation delay.
+================================================================================

@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Pytest cache
+.pytest_cache/
+.cache/
+*.testmondata
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Large generated plots (keep CSVs, remove PNG/PNG plots if very large)
+# outputs/sensitivity_plots/*.png
+# outputs/failure_case_plots/*.png
+
+# Temporary files
+*.tmp
+*.bak

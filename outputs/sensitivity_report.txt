@@ -1,0 +1,159 @@
+==========================================================================================
+PEAK-DEMAND CAPACITY SIMULATOR -- SENSITIVITY ANALYSIS REPORT
+==========================================================================================
+Generated Date: 2026-09-29 10:34
+Stress Scenario: DISASTER_PEAK
+Total Assumptions Tested: 7
+Total Simulations Executed: 21
+
+PURPOSE:
+This analysis tests which planning assumptions materially affect
+the capacity recommendation. If changing an assumption causes
+SLA compliance to flip, peak instances to change significantly,
+or latency to cross the SLA threshold, it is classified as
+'DECISION-CHANGING'. Otherwise it has 'LITTLE EFFECT'.
+
+------------------------------------------------------------------------------------------
+1. ASSUMPTION CLASSIFICATION SUMMARY
+------------------------------------------------------------------------------------------
+
+  Assumption                          Classification         Lower SLA%  Base SLA% Upper SLA%
+  ---------------------------------------------------------------------------------------
+  Traffic Multiplier                  DECISION-CHANGING          100.0%     100.0%     100.0%
+  Capacity per Instance               DECISION-CHANGING          100.0%     100.0%     100.0%
+  Safety Margin (Extra Base Instances) DECISION-CHANGING          100.0%     100.0%     100.0%
+  Initial Instance Count              DECISION-CHANGING          100.0%     100.0%     100.0%
+  Scaling Delay                       LITTLE EFFECT              100.0%     100.0%     100.0%
+  Maximum Available Instances         LITTLE EFFECT              100.0%     100.0%     100.0%
+  SLA Latency Target                  LITTLE EFFECT               99.0%     100.0%     100.0%
+
+------------------------------------------------------------------------------------------
+2. DECISION-CHANGING ASSUMPTIONS
+------------------------------------------------------------------------------------------
+
+  4 assumption(s) materially change the capacity recommendation:
+
+  1. Traffic Multiplier
+     Description: Scales the incoming traffic volume up or down from the scenario default.
+     Tested Range: Lower=0.7x, Baseline=1.0x, Upper=1.5x
+
+     Metric                                Lower     Baseline        Upper
+     ------------------------------------------------------------------
+     SLA Compliance %                     100.0%       100.0%       100.0%
+     Max p95 Latency (ms)                  164.7        343.4        298.3
+     Peak Instances                           10           14           20
+     Peak Queue Depth                        0.0          0.0          0.0
+
+     Why it matters:
+       - Required peak instances vary by 10 (71%)
+
+  2. Capacity per Instance
+     Description: Maximum requests per minute each application instance can handle.
+     Tested Range: Lower=300.0RPM, Baseline=500.0RPM, Upper=800.0RPM
+
+     Metric                                Lower     Baseline        Upper
+     ------------------------------------------------------------------
+     SLA Compliance %                     100.0%       100.0%       100.0%
+     Max p95 Latency (ms)                  447.0        343.4        131.4
+     Peak Instances                           22           14           10
+     Peak Queue Depth                        0.0          0.0          0.0
+
+     Why it matters:
+       - Required peak instances vary by 12 (86%)
+
+  3. Safety Margin (Extra Base Instances)
+     Description: Additional instances added to initial fleet as a safety buffer above baseline.
+     Tested Range: Lower=0instances, Baseline=0instances, Upper=10instances
+
+     Metric                                Lower     Baseline        Upper
+     ------------------------------------------------------------------
+     SLA Compliance %                     100.0%       100.0%       100.0%
+     Max p95 Latency (ms)                  343.4        343.4        112.4
+     Peak Instances                           14           14           20
+     Peak Queue Depth                        0.0          0.0          0.0
+
+     Why it matters:
+       - Required peak instances vary by 6 (43%)
+
+  4. Initial Instance Count
+     Description: Number of server instances active at simulation start before auto-scaling kicks in.
+     Tested Range: Lower=5instances, Baseline=10instances, Upper=20instances
+
+     Metric                                Lower     Baseline        Upper
+     ------------------------------------------------------------------
+     SLA Compliance %                     100.0%       100.0%       100.0%
+     Max p95 Latency (ms)                  342.5        343.4        112.4
+     Peak Instances                           13           14           20
+     Peak Queue Depth                        0.0          0.0          0.0
+
+     Why it matters:
+       - Required peak instances vary by 7 (50%)
+
+------------------------------------------------------------------------------------------
+3. ASSUMPTIONS WITH LITTLE EFFECT
+------------------------------------------------------------------------------------------
+
+  3 assumption(s) have little effect on the outcome:
+
+  1. Scaling Delay
+     Time required to provision new server instances after a scale-out decision.
+     SLA Compliance: 100.0% / 100.0% / 100.0% (Lower/Base/Upper)
+     - All test levels produce similar outcomes with no material differences
+
+  2. Maximum Available Instances
+     Hard ceiling on the number of server instances the auto-scaler can provision.
+     SLA Compliance: 100.0% / 100.0% / 100.0% (Lower/Base/Upper)
+     - All test levels produce similar outcomes with no material differences
+
+  3. SLA Latency Target
+     Maximum acceptable p95 response time before declaring an SLA breach.
+     SLA Compliance: 99.0% / 100.0% / 100.0% (Lower/Base/Upper)
+     - All test levels produce similar outcomes with no material differences
+
+------------------------------------------------------------------------------------------
+4. PLAIN LANGUAGE SUMMARY
+------------------------------------------------------------------------------------------
+
+  This sensitivity analysis tested what happens to the capacity plan when we
+  change each assumption individually, while keeping everything else constant.
+
+  The following assumptions are CRITICAL to get right:
+
+  - Traffic Multiplier: If actual disaster traffic is 1.5x higher than
+    modeled, the infrastructure plan may not absorb the load. This is
+    the single most impactful assumption because it directly controls demand volume.
+
+  - Capacity per Instance: If each server handles only 300.0 RPM instead
+    of 500.0 RPM, the system needs substantially more instances
+    and queues grow much larger during peak demand.
+
+  - Safety Margin (Extra Base Instances): Adding 10 extra pre-warmed instances
+    significantly reduces queue depth during the first minutes of a disaster surge.
+
+  - Initial Instance Count: Starting with only 5 servers instead of
+    10 creates a deeper initial capacity gap, leading to queue buildup
+    before auto-scaling can react.
+
+  The following assumptions have LITTLE EFFECT within the tested range:
+
+  - Scaling Delay: Varying this within the tested range does not materially
+    change the capacity recommendation or SLA compliance outcome.
+  - Maximum Available Instances: Varying this within the tested range does not materially
+    change the capacity recommendation or SLA compliance outcome.
+  - SLA Latency Target: Varying this within the tested range does not materially
+    change the capacity recommendation or SLA compliance outcome.
+
+------------------------------------------------------------------------------------------
+5. RECOMMENDATION
+------------------------------------------------------------------------------------------
+
+  Focus planning effort on the DECISION-CHANGING assumptions listed above.
+  These are the parameters where getting the estimate wrong could lead to
+  either over-provisioning (wasting budget) or under-provisioning (SLA breach).
+
+  For LITTLE EFFECT assumptions, the current baseline values are acceptable.
+  Small estimation errors in these parameters will not change the final decision.
+
+==========================================================================================
+REPORT COMPLETE -- Sensitivity Analysis Saved to outputs/
+==========================================================================================

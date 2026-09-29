@@ -1,0 +1,70 @@
+================================================================================
+PEAK-DEMAND CAPACITY SIMULATOR -- BASELINE CAPACITY EVALUATION REPORT
+================================================================================
+Generated Date: 2026-09-05
+Scope: Baseline Capacity Model & Workload Scenario Stress Testing
+
+--------------------------------------------------------------------------------
+1. INFRASTRUCTURE CONSTRAINTS SUMMARY
+--------------------------------------------------------------------------------
+- Current Active Server Fleet:    10 instances
+- Maximum Allowed Infrastructure:  50 instances (hard ceiling)
+- Capacity per Server Instance:   500 requests/minute (RPM)
+- Planning Safety Margin Buffer:  20%
+- Current Baseline Capacity:      5,000 RPM (10 servers x 500 RPM)
+- Maximum Sustainable Capacity:   25,000 RPM (50 servers x 500 RPM)
+
+--------------------------------------------------------------------------------
+2. AVERAGE DEMAND PLANNING vs PEAK WORKLOAD SCENARIOS
+--------------------------------------------------------------------------------
+Demand Type                  Peak Demand      Req. Servers   Capacity Gap    Status
+--------------------------------------------------------------------------------
+Average Demand (Everyday)         953.1 RPM            3          0.0 RPM  SUFFICIENT
+Historical Peak (Normal)          920.0 RPM            3          0.0 RPM  SUFFICIENT
+Scenario: NORMAL                  967.3 RPM            3          0.0 RPM  SUFFICIENT
+Scenario: SEASONAL_PEAK         1,737.3 RPM            5          0.0 RPM  SUFFICIENT
+Scenario: BREAKING_NEWS         2,083.1 RPM            5          0.0 RPM  SUFFICIENT
+Scenario: DISASTER_PEAK         5,016.2 RPM           13         16.2 RPM  SUFFICIENT
+Scenario: EXTREME_DISASTER      8,464.3 RPM           21      3,464.3 RPM  SUFFICIENT
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+3. NON-TECHNICAL STAKEHOLDER EXECUTIVE SUMMARY
+--------------------------------------------------------------------------------
+The current system can handle approximately 5,000 requests per minute under 
+normal baseline conditions using its standard fleet of 10 servers.
+
+Under everyday average demand (953 requests per minute), the 
+system operates smoothly with low resource utilisation, requiring only 3 servers.
+
+HOWEVER, planning infrastructure based strictly on average demand creates a 
+DANGEROUS FALSE SENSE OF SECURITY:
+
+1. During a Major Disaster Scenario (e.g. Cat-3 Hurricane or major flood), 
+   traffic surges to approximately 5,016 requests per minute.
+   - This creates an immediate Capacity Gap of 16 requests per minute 
+     above current capacity.
+   - To serve this disaster surge safely with a 20% buffer, the system requires 
+     13 server instances.
+   - Since current max infrastructure allows up to 50 servers, max capacity (25,000 RPM) 
+     CAN handle this surge if scaling triggers in time.
+
+2. During a Catastrophic Extreme Disaster (e.g. Cat-5 Hurricane or earthquake), 
+   traffic surges to 8,464 requests per minute.
+   - This produces a massive Capacity Gap of 3,464 requests per minute.
+   - Serving this peak requires 21 servers -- exceeding our hard 
+     infrastructure limit of 50 servers by 0 servers.
+   - Result: A unhandled Capacity Shortfall of 0 requests per minute, 
+     causing server overload, website crashes, and emergency SLA breaches.
+
+--------------------------------------------------------------------------------
+4. KEY TAKEAWAYS & RECOMMENDATIONS
+--------------------------------------------------------------------------------
+- Average-based planning masks extreme peak spikes and guarantees website failure 
+  when citizens need emergency information most.
+- Scenario-based capacity planning identifies exact server provisioning limits 
+  BEFORE disaster strikes.
+
+================================================================================
+REPORT COMPLETE -- Baseline Capacity Analysis Completed Successfully.
+================================================================================

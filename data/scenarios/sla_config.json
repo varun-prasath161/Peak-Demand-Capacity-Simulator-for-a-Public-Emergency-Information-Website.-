@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "description": "Configurable SLA Targets for Peak-Demand Emergency Website Capacity Simulator",
+  "disclaimer": "Simulation assumptions for performance evaluation -- not live production requirements.",
+  "sla_targets": {
+    "p95_latency_target_ms": 500.0,
+    "p99_latency_target_ms": 1500.0,
+    "error_rate_target_pct": 1.0,
+    "error_rate_target": 0.01,
+    "sla_compliance_target_pct": 99.0,
+    "max_acceptable_queue_depth": 1000.0,
+    "recovery_time_target_minutes": 60.0
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "organisations": [
+    {
+      "organisation_id": "emergency_ops_centre",
+      "organisation_name": "Emergency Operations Centre",
+      "description": "Primary disaster coordination authority managing crisis response, emergency broadcasts, and high-priority public advisories.",
+      "allowed_scenarios": [
+        "NORMAL",
+        "SEASONAL_PEAK",
+        "BREAKING_NEWS",
+        "DISASTER_PEAK",
+        "EXTREME_DISASTER",
+        "DISASTER_BREAKING_NEWS",
+        "DISASTER_SEASONAL"
+      ],
+      "default_SLA_target": {
+        "p95_latency_target_ms": 500.0,
+        "error_rate_target": 0.01,
+        "sla_compliance_target_pct": 99.0
+      },
+      "allowed_actions": [
+        "view_dashboard",
+        "view_scenario_results",
+        "view_sla_status",
+        "run_simulation",
+        "compare_scenarios",
+        "run_sensitivity",
+        "run_failure_testing",
+        "modify_capacity",
+        "modify_scaling",
+        "view_detailed_infrastructure"
+      ]
+    },
+    {
+      "organisation_id": "government_agency",
+      "organisation_name": "Government Agency",
+      "description": "Oversight authority ensuring statutory compliance, inter-agency communication, and infrastructure resilience audits.",
+      "allowed_scenarios": [
+        "NORMAL",
+        "SEASONAL_PEAK",
+        "BREAKING_NEWS",
+        "DISASTER_PEAK",
+        "EXTREME_DISASTER",
+        "DISASTER_BREAKING_NEWS",
+        "DISASTER_SEASONAL"
+      ],
+      "default_SLA_target": {
+        "p95_latency_target_ms": 600.0,
+        "error_rate_target": 0.01,
+        "sla_compliance_target_pct": 98.0
+      },
+      "allowed_actions": [
+        "view_dashboard",
+        "view_scenario_results",
+        "view_sla_status",
+        "run_simulation",
+        "compare_scenarios",
+        "run_sensitivity",
+        "view_reports",
+        "audit_compliance",
+        "view_detailed_infrastructure"
+      ]
+    },
+    {
+      "organisation_id": "healthcare_partner",
+      "organisation_name": "Healthcare Partner",
+      "description": "Hospital networks and emergency healthcare coordinators monitoring public guidance under strict uptime and latency requirements.",
+      "allowed_scenarios": [
+        "NORMAL",
+        "SEASONAL_PEAK",
+        "BREAKING_NEWS",
+        "DISASTER_PEAK"
+      ],
+      "default_SLA_target": {
+        "p95_latency_target_ms": 400.0,
+        "error_rate_target": 0.005,
+        "sla_compliance_target_pct": 99.5
+      },
+      "allowed_actions": [
+        "view_dashboard",
+        "view_scenario_results",
+        "view_sla_status",
+        "run_simulation",
+        "compare_scenarios",
+        "view_healthcare_metrics",
+        "view_detailed_infrastructure"
+      ]
+    },
+    {
+      "organisation_id": "external_info_partner",
+      "organisation_name": "External Information Partner",
+      "description": "Media outlets, community organizations, and public syndication relays receiving public advisories with sensitive infrastructure details redacted.",
+      "allowed_scenarios": [
+        "NORMAL",
+        "SEASONAL_PEAK",
+        "BREAKING_NEWS"
+      ],
+      "default_SLA_target": {
+        "p95_latency_target_ms": 800.0,
+        "error_rate_target": 0.02,
+        "sla_compliance_target_pct": 95.0
+      },
+      "allowed_actions": [
+        "view_dashboard",
+        "view_scenario_results",
+        "view_sla_status",
+        "view_basic_recommendations"
+      ]
+    }
+  ]
+}

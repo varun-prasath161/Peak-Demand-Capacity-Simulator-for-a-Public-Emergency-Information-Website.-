@@ -1,0 +1,8 @@
+scenario_key,scenario_name,event_type,event_severity,traffic_multiplier,average_demand_rpm,peak_demand_rpm,maximum_queue_depth,maximum_p95_latency_ms,maximum_error_rate_pct,maximum_utilisation_pct,peak_instances,max_instance_cap,scaling_actions,sla_compliance_pct,sla_status
+NORMAL,Normal Operations,normal,none,1.0,798.2,967.3,0.0,79.3,0.14,16.2,10,50,0,100.0,COMPLIANT
+SEASONAL_PEAK,Seasonal Peak,seasonal,low,1.8,1293.1,1737.3,0.0,91.7,0.18,30.4,10,50,0,100.0,COMPLIANT
+BREAKING_NEWS,Breaking News Event,breaking_news,medium,2.5,1603.7,2083.1,0.0,99.1,0.18,34.3,10,50,0,100.0,COMPLIANT
+DISASTER_PEAK,Major Disaster Peak,disaster,high,4.5,3111.6,5016.2,0.0,343.4,0.18,73.2,14,50,4,100.0,COMPLIANT
+EXTREME_DISASTER,Catastrophic Extreme Disaster,extreme_disaster,critical,8.5,5638.6,8464.3,2431.5,5572.2,0.63,94.3,22,50,9,99.3,COMPLIANT
+DISASTER_BREAKING_NEWS,Disaster + Breaking News (Compound),disaster_breaking_news,critical,6.0,4074.7,5999.7,0.0,451.7,0.18,80.2,15,40,4,100.0,COMPLIANT
+DISASTER_SEASONAL,Disaster + Seasonal Peak (Compound),disaster_seasonal,high,5.5,4160.0,5830.0,0.0,348.8,0.18,77.5,16,45,5,100.0,COMPLIANT

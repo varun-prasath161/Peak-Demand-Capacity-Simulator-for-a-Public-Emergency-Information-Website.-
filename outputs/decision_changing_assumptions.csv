@@ -1,0 +1,93 @@
+parameter,baseline_value,tested_value,scenario,baseline_sla,tested_sla,baseline_queue,tested_queue,baseline_latency,tested_latency,baseline_unmet_requests,tested_unmet_requests,decision_changed,reason
+traffic_multiplier,1.0,0.7,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,81.5,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,1.3,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,106.8,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,1.6,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,128.9,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,2.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,181.8,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,0.7,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,164.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,1.3,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,292.9,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,1.6,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,449.1,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,2.0,DISASTER_PEAK,100.0,99.0,0.0,0.0,343.4,684.6,0.0,0.0,True,Response latency crossed 500ms target (343ms -> 685ms).
+traffic_multiplier,1.0,0.7,EXTREME_DISASTER,99.3,100.0,2431.5,0.0,5572.2,350.8,0.0,0.0,True,"Response latency crossed 500ms target (5,572ms -> 351ms)."
+traffic_multiplier,1.0,1.3,EXTREME_DISASTER,99.3,98.6,2431.5,4876.5,5572.2,9685.9,0.0,0.0,True,SLA status flipped from COMPLIANT (99.3%) to VIOLATED (98.6%).
+traffic_multiplier,1.0,1.6,EXTREME_DISASTER,99.3,97.9,2431.5,23308.5,5572.2,33634.4,0.0,0.0,True,SLA status flipped from COMPLIANT (99.3%) to VIOLATED (97.9%).
+traffic_multiplier,1.0,2.0,EXTREME_DISASTER,99.3,97.9,2431.5,47886.0,5572.2,60276.3,0.0,0.0,True,SLA status flipped from COMPLIANT (99.3%) to VIOLATED (97.9%).
+traffic_multiplier,1.0,0.7,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,213.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+traffic_multiplier,1.0,1.3,DISASTER_BREAKING_NEWS,100.0,98.0,0.0,0.0,451.7,740.4,0.0,0.0,True,SLA status flipped from COMPLIANT (100.0%) to VIOLATED (98.0%).; Response latency crossed 500ms target (452ms -> 740ms).
+traffic_multiplier,1.0,1.6,DISASTER_BREAKING_NEWS,100.0,98.0,0.0,4479.0,451.7,9169.5,0.0,0.0,True,"SLA status flipped from COMPLIANT (100.0%) to VIOLATED (98.0%).; Response latency crossed 500ms target (452ms -> 9,170ms)."
+traffic_multiplier,1.0,2.0,DISASTER_BREAKING_NEWS,100.0,95.9,0.0,24348.0,451.7,34985.1,0.0,0.0,True,"SLA status flipped from COMPLIANT (100.0%) to VIOLATED (95.9%).; Response latency crossed 500ms target (452ms -> 34,985ms)."
+scaling_delay_seconds,180.0,60.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,180.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,300.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,600.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,60.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,180.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,300.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,600.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,60.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,180.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,300.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,600.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,60.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,180.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,300.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+scaling_delay_seconds,180.0,600.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+capacity_per_instance,500.0,300.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,135.3,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+capacity_per_instance,500.0,800.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,80.1,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+capacity_per_instance,500.0,300.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,447.0,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+capacity_per_instance,500.0,800.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,131.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+capacity_per_instance,500.0,300.0,EXTREME_DISASTER,99.3,97.9,2431.5,16443.0,5572.2,38957.0,0.0,0.0,True,SLA status flipped from COMPLIANT (99.3%) to VIOLATED (97.9%).
+capacity_per_instance,500.0,800.0,EXTREME_DISASTER,99.3,100.0,2431.5,0.0,5572.2,283.5,0.0,0.0,True,"Response latency crossed 500ms target (5,572ms -> 284ms)."
+capacity_per_instance,500.0,300.0,DISASTER_BREAKING_NEWS,100.0,98.0,0.0,4674.0,451.7,13471.4,0.0,0.0,True,"SLA status flipped from COMPLIANT (100.0%) to VIOLATED (98.0%).; Response latency crossed 500ms target (452ms -> 13,471ms)."
+capacity_per_instance,500.0,800.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,218.9,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,20.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,50.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,80.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,20.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,50.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,80.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,20.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,50.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,80.0,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,20.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,50.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+max_instances,50.0,80.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,5.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,181.8,181.8,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,10.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,181.8,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,20.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,181.8,77.9,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,5.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,342.5,342.5,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,10.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,342.5,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,20.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,342.5,112.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,5.0,EXTREME_DISASTER,97.9,97.9,23943.0,23943.0,60276.3,60276.3,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,10.0,EXTREME_DISASTER,97.9,99.3,23943.0,2431.5,60276.3,5572.2,0.0,0.0,True,SLA status flipped from VIOLATED (97.9%) to COMPLIANT (99.3%).
+initial_instances,10.0,20.0,EXTREME_DISASTER,97.9,100.0,23943.0,0.0,60276.3,234.3,0.0,0.0,True,"SLA status flipped from VIOLATED (97.9%) to COMPLIANT (100.0%).; Response latency crossed 500ms target (60,276ms -> 234ms)."
+initial_instances,10.0,5.0,DISASTER_BREAKING_NEWS,98.0,98.0,12174.0,12174.0,34985.1,34985.1,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+initial_instances,10.0,10.0,DISASTER_BREAKING_NEWS,98.0,100.0,12174.0,0.0,34985.1,451.7,0.0,0.0,True,"SLA status flipped from VIOLATED (98.0%) to COMPLIANT (100.0%).; Response latency crossed 500ms target (34,985ms -> 452ms)."
+initial_instances,10.0,20.0,DISASTER_BREAKING_NEWS,98.0,100.0,12174.0,0.0,34985.1,141.6,0.0,0.0,True,"SLA status flipped from VIOLATED (98.0%) to COMPLIANT (100.0%).; Response latency crossed 500ms target (34,985ms -> 142ms)."
+safety_margin_pct,20.0,0.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,85.2,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,10.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,85.2,88.0,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,30.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,85.2,83.0,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,0.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,260.2,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,10.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,260.2,247.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,30.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,260.2,218.1,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,0.0,EXTREME_DISASTER,100.0,99.3,0.0,2431.5,400.9,5572.2,0.0,0.0,True,"Response latency crossed 500ms target (401ms -> 5,572ms)."
+safety_margin_pct,20.0,10.0,EXTREME_DISASTER,100.0,99.3,0.0,0.0,400.9,697.3,0.0,0.0,True,Response latency crossed 500ms target (401ms -> 697ms).
+safety_margin_pct,20.0,30.0,EXTREME_DISASTER,100.0,99.3,0.0,0.0,400.9,909.1,0.0,0.0,True,Response latency crossed 500ms target (401ms -> 909ms).
+safety_margin_pct,20.0,0.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,10.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,297.3,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+safety_margin_pct,20.0,30.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,283.0,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,12.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,79.2,73.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,36.0,SEASONAL_PEAK,100.0,100.0,0.0,0.0,79.2,88.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,12.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,336.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,36.0,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,353.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,12.0,EXTREME_DISASTER,99.0,98.0,0.0,10861.5,915.2,17462.2,0.0,0.0,True,SLA status flipped from COMPLIANT (99.0%) to VIOLATED (98.0%).
+disaster_duration_hours,24.0,36.0,EXTREME_DISASTER,99.0,99.3,0.0,2431.5,915.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,12.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,294.9,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+disaster_duration_hours,24.0,36.0,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,294.9,318.9,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.4,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.8,SEASONAL_PEAK,100.0,100.0,0.0,0.0,91.7,91.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.4,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.8,DISASTER_PEAK,100.0,100.0,0.0,0.0,343.4,343.4,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.4,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.8,EXTREME_DISASTER,99.3,99.3,2431.5,2431.5,5572.2,5572.2,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.4,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.
+peak_duration_ratio,0.65,0.8,DISASTER_BREAKING_NEWS,100.0,100.0,0.0,0.0,451.7,451.7,0.0,0.0,False,Parameter variation produced no material change in capacity decision.

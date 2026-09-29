@@ -1,0 +1,72 @@
+================================================================================
+PEAK-DEMAND CAPACITY SIMULATOR — DATA QUALITY & PREPROCESSING REPORT
+================================================================================
+Generated Date: 2026-09-05
+Input Dataset:  data/raw/emergency_load_raw.csv
+Output Dataset: data/processed/emergency_load_cleaned.csv
+
+--------------------------------------------------------------------------------
+1. DATASET RECORD COUNT & SUMMARY
+--------------------------------------------------------------------------------
+- Original Raw Records:       3,885
+- Cleaned Final Records:      3,882
+- Duplicate Rows Removed:     3
+- Missing Values (Before):    560
+- Missing Values (After):     0
+- Total Records Repaired:     548 (14.12% of dataset)
+- Disaster Spikes Preserved:  312 high-surge records preserved intact
+
+--------------------------------------------------------------------------------
+2. DETAILED ANOMALY BREAKDOWN & REPAIRS
+--------------------------------------------------------------------------------
+* Missing Values Imputed:        560
+  -> Strategy: Used linear time-based interpolation for operational metrics 
+     (RPM, CPU %, Latency ms, Queue Depth) and mode/forward-fill for categoricals.
+     No blind zero-filling was applied.
+
+* Impossible Negative Values:    10
+  -> Strategy: Replaced negative operational counts/rates with absolute positive 
+     values (abs()) as physical throughput cannot be negative.
+
+* Utilisation Out-of-Bounds:     7
+  -> Strategy: Clamped CPU and Memory utilisation values to the valid physical 
+     range of [0.0%, 100.0%].
+
+* Total Capacity Mismatches:     6
+  -> Strategy: Re-enforced total system capacity formula:
+     total_capacity_rpm = available_instances * instance_capacity_rpm
+
+* Latency Percentile Inversions:  0
+  -> Strategy: Enforced mathematical constraint (p99 >= p95 >= average_latency_ms).
+
+--------------------------------------------------------------------------------
+3. ROW-LEVEL QUALITY FLAGS BREAKDOWN
+--------------------------------------------------------------------------------
+  - VALID                       :  3,334 records (85.88%)
+  - IMPUTED_MISSING             :    525 records (13.52%)
+  - REPAIRED_NEGATIVE           :     10 records ( 0.26%)
+  - REPAIRED_CAPACITY           :      6 records ( 0.15%)
+  - REPAIRED_UTILISATION        :      6 records ( 0.15%)
+  - MULTIPLE_REPAIRS            :      1 records ( 0.03%)
+
+--------------------------------------------------------------------------------
+4. IMPORTANT DOMAIN ASSUMPTIONS & DESIGN DECISIONS
+--------------------------------------------------------------------------------
+1. Disaster Surge Preservation:
+   - High request rates, extreme CPU usage, and high response latencies occurring 
+     during 'disaster' and 'extreme_disaster' events are LEGITIMATE emergency traffic 
+     spikes, NOT data errors. They were explicitly preserved to ensure valid peak 
+     capacity modeling.
+
+2. Time-Based Interpolation over Zero Imputation:
+   - Zero-filling missing website traffic metrics creates artificial drops that distort 
+     auto-scaling triggers and queue calculations. Linear time-interpolation maintains 
+     realistic traffic continuity.
+
+3. Capacity Integrity Enforcement:
+   - Total system capacity is deterministically recalculated from active server instances 
+     and per-instance throughput bounds to guarantee downstream simulation accuracy.
+
+================================================================================
+REPORT COMPLETE — Preprocessing Pipeline Validation Passed.
+================================================================================

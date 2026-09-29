@@ -1,0 +1,49 @@
+parameter_name,metric_name,baseline_value,minimum_value,maximum_value,absolute_range,relative_change_pct
+traffic_multiplier,SLA Compliance %,99.83,95.9,100.0,4.1,4.1
+traffic_multiplier,Max Queue Depth,607.88,0.0,47886.0,47886.0,7877.6
+traffic_multiplier,Max p95 Latency (ms),1614.75,81.5,60276.3,60194.8,3727.8
+traffic_multiplier,Max Error Rate %,0.29,0.18,50.72,50.54,17278.6
+traffic_multiplier,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+traffic_multiplier,Total Simulated Cost ($),231.47,66.75,1038.5,971.75,419.8
+scaling_delay_seconds,SLA Compliance %,100.0,99.3,100.0,0.7,0.7
+scaling_delay_seconds,Max Queue Depth,0.0,0.0,2431.5,2431.5,243150000.0
+scaling_delay_seconds,Max p95 Latency (ms),91.7,91.7,5572.2,5480.5,5976.6
+scaling_delay_seconds,Max Error Rate %,0.18,0.18,0.63,0.45,250.0
+scaling_delay_seconds,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+scaling_delay_seconds,Total Simulated Cost ($),245.0,84.5,453.88,369.38,150.8
+capacity_per_instance,SLA Compliance %,99.83,97.9,100.0,2.1,2.1
+capacity_per_instance,Max Queue Depth,607.88,0.0,16443.0,16443.0,2705.0
+capacity_per_instance,Max p95 Latency (ms),1614.75,80.1,38957.0,38876.9,2407.6
+capacity_per_instance,Max Error Rate %,0.29,0.18,9.05,8.87,3032.5
+capacity_per_instance,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+capacity_per_instance,Total Simulated Cost ($),231.47,61.25,903.75,842.5,364.0
+max_instances,SLA Compliance %,100.0,99.3,100.0,0.7,0.7
+max_instances,Max Queue Depth,0.0,0.0,2431.5,2431.5,243150000.0
+max_instances,Max p95 Latency (ms),91.7,91.7,5572.2,5480.5,5976.6
+max_instances,Max Error Rate %,0.18,0.18,0.63,0.45,250.0
+max_instances,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+max_instances,Total Simulated Cost ($),245.0,84.5,453.88,369.38,150.8
+initial_instances,SLA Compliance %,100.0,97.9,100.0,2.1,2.1
+initial_instances,Max Queue Depth,0.0,0.0,23943.0,23943.0,2394300000.0
+initial_instances,Max p95 Latency (ms),181.8,77.9,60276.3,60198.4,33112.4
+initial_instances,Max Error Rate %,0.18,0.18,43.54,43.36,24088.9
+initial_instances,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+initial_instances,Total Simulated Cost ($),122.5,84.5,661.25,576.75,470.8
+safety_margin_pct,SLA Compliance %,100.0,99.3,100.0,0.7,0.7
+safety_margin_pct,Max Queue Depth,0.0,0.0,2431.5,2431.5,243150000.0
+safety_margin_pct,Max p95 Latency (ms),299.5,83.0,5572.2,5489.2,1832.8
+safety_margin_pct,Max Error Rate %,0.26,0.18,0.63,0.45,174.8
+safety_margin_pct,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+safety_margin_pct,Total Simulated Cost ($),221.34,83.38,467.75,384.37,173.7
+disaster_duration_hours,SLA Compliance %,99.75,98.0,100.0,2.0,2.0
+disaster_duration_hours,Max Queue Depth,0.0,0.0,10861.5,10861.5,1086150000.0
+disaster_duration_hours,Max p95 Latency (ms),408.17,73.2,17462.2,17389.0,4260.2
+disaster_duration_hours,Max Error Rate %,0.17,0.13,3.52,3.39,1994.1
+disaster_duration_hours,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+disaster_duration_hours,Total Simulated Cost ($),202.12,65.0,453.88,388.88,192.4
+peak_duration_ratio,SLA Compliance %,99.83,99.3,100.0,0.7,0.7
+peak_duration_ratio,Max Queue Depth,607.88,0.0,2431.5,2431.5,400.0
+peak_duration_ratio,Max p95 Latency (ms),1614.75,91.7,5572.2,5480.5,339.4
+peak_duration_ratio,Max Error Rate %,0.29,0.18,0.63,0.45,153.8
+peak_duration_ratio,Unmet Requests,0.0,0.0,0.0,0.0,0.0
+peak_duration_ratio,Total Simulated Cost ($),231.47,84.5,453.88,369.38,159.6

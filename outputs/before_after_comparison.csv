@@ -1,0 +1,13 @@
+Metric,Baseline (Average-Based),Scenario-Based (Peak-Based),Delta / Improvement
+Planning Model Approach,Average Demand Planning,Disaster Scenario Planning,Approach Shift
+Initial Instance Count,4 instances,10 instances,+6 instances (+150%)
+Maximum Instance Ceiling,6 instances,20 instances,+14 instances (+233%)
+Peak Demand (RPM),"5,027 RPM","5,027 RPM",Identical Test Load
+Peak Provisioned Capacity,"3,000 RPM","7,000 RPM","+4,000 RPM (+133%)"
+Peak Instances Reached,6 instances,14 instances,+8 instances
+Maximum Queue Depth,"50,000 requests",0 requests,"-50,000 requests (-100%)"
+Maximum p95 Latency,"62,630 ms",384 ms,"-62,246 ms (-68%)"
+Maximum Error Rate,65.29%,0.18%,-65.11%
+Total Unmet / Dropped Requests,"350,416 requests",0 requests,"-350,416 requests"
+SLA Compliance Percentage,20.6%,100.0%,+79.4%
+SLA Status Result,FAILED (SLA Violated),PASSED (SLA Compliant),SUCCESS
