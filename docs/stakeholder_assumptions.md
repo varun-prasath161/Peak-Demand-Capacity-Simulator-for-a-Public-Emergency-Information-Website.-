@@ -41,3 +41,9 @@ Capacity planning for public emergency websites requires aligning technical simu
 - **Homogeneous Node Performance**: Assumes all application server instances possess identical CPU and RAM capacity.
 - **Simplified Queuing Model**: Uses M/M/1 queuing approximations for latency degradation under load.
 - **Single Region Ingress**: Assumes a single geographic ingress point without global multi-region CDN caching effects.
+
+---
+
+## Stakeholder Validation Status
+
+> **Stakeholder validation has not been independently conducted and remains future work.** The assumptions listed above are derived from technical analysis of common emergency website infrastructure patterns, cloud provider documentation, and academic literature on disaster traffic surges. These assumptions should be reviewed and validated by actual emergency operations stakeholders, infrastructure teams, and SLA compliance officers before being used for production capacity planning decisions.
